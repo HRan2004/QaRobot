@@ -16,11 +16,3 @@ trainer = ListTrainer(chatbot)
 trainer.train(conversation)
 print("Train finished.\n")
 
-while True:
-    try:
-        user_input = input("You: ")
-        response = chatbot.get_response(user_input)
-        print("Robot: ", response)
-
-    except (KeyboardInterrupt, EOFError, SystemExit):
-        break
