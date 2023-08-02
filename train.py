@@ -1,9 +1,7 @@
-from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from datasets import dialogs
+from robot import chatbot
 
-print('Running...')
-chatbot = ChatBot('对话机器人')
 
 print('Making datasets...')
 conversation = []
@@ -17,3 +15,12 @@ print("\nTraining...")
 trainer = ListTrainer(chatbot)
 trainer.train(conversation)
 print("Train finished.\n")
+
+while True:
+    try:
+        user_input = input("You: ")
+        response = chatbot.get_response(user_input)
+        print("Robot: ", response)
+
+    except (KeyboardInterrupt, EOFError, SystemExit):
+        break
